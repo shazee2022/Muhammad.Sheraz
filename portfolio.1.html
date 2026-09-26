@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Sheraz — Network Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0C; --panel:#121216; --line:#232329;
+  --text:#F1EFEA; --muted:#87858F;
+  --signal:#FFB454; --signal-dim:#7A5A2C;
+  --blue:#5B8DEF;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:inherit;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.035) 1px,transparent 1px);
+  background-size:26px 26px;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.disp{font-family:'Space Grotesk',sans-serif;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,10,12,0.88);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10;}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:900px;margin:0 auto;}
+.brand{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--signal);}
+.topnav a{font-size:14px;color:var(--muted);text-decoration:none;margin-left:24px;}
+.topnav a:hover{color:var(--text);}
+
+.hero{padding:80px 0 60px;border-bottom:1px solid var(--line);}
+h1.name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,8vw,76px);line-height:0.98;letter-spacing:-0.02em;}
+.role{font-family:'JetBrains Mono',monospace;color:var(--signal);font-size:16px;margin-top:16px;}
+.lede{color:var(--muted);max-width:480px;margin-top:18px;font-size:15px;}
+
+.term{margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:6px;
+  max-width:560px;overflow:hidden;}
+.term-bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);}
+.term-bar span{width:9px;height:9px;border-radius:50%;background:#3a3a42;}
+.term-body{padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);min-height:150px;}
+.term-body .ok{color:var(--signal);}
+.term-body .line{opacity:0;animation:fadeIn .4s forwards;}
+@keyframes fadeIn{to{opacity:1;}}
+@media (prefers-reduced-motion:reduce){.term-body .line{animation:none;opacity:1;}}
+
+.contact-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:32px;font-size:14px;}
+.contact-row a,.contact-row span{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;}
+.contact-row a:hover{color:var(--signal);border-color:var(--signal-dim);}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);}
+.stat{padding:22px 24px;border-right:1px solid var(--line);}
+.stat:last-child{border-right:none;}
+.stat .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:var(--signal);}
+.stat .lab{font-size:12px;color:var(--muted);margin-top:4px;}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr);}.stat:nth-child(2){border-right:none;}}
+
+section{padding:56px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:34px;}
+.sec-num{font-family:'JetBrains Mono',monospace;color:var(--signal-dim);font-size:13px;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;}
+
+.tl{position:relative;padding-left:28px;}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line);}
+.job{position:relative;padding:0 0 34px 20px;}
+.job:last-child{padding-bottom:0;}
+.job::before{content:"";position:absolute;left:-28px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--signal);}
+.job .when{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);}
+.job h3{font-size:17px;font-weight:600;margin-top:4px;}
+.job .co{color:var(--signal);font-size:14px;margin-top:2px;}
+.job ul{margin-top:12px;padding-left:18px;color:var(--muted);font-size:14px;}
+.job li{margin-bottom:6px;}
+
+.skill-map{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.node{background:var(--panel);padding:22px 24px;}
+.node h4{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--signal);margin-bottom:10px;}
+.node p{color:var(--muted);font-size:14px;}
+@media(max-width:640px){.skill-map{grid-template-columns:1fr;}}
+
+.cert-row{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{border:1px solid var(--line);border-radius:20px;padding:9px 16px;font-size:13.5px;display:flex;gap:8px;align-items:center;}
+.chip .abbr{font-family:'JetBrains Mono',monospace;color:var(--signal);font-weight:500;}
+
+.lang-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;}
+.lang{border:1px solid var(--line);border-radius:3px;padding:8px 14px;font-size:13.5px;color:var(--muted);}
+.lang b{color:var(--text);}
+
+footer{padding:56px 0 64px;}
+footer p{color:var(--muted);font-size:15px;max-width:480px;}
+.cta{display:inline-block;margin-top:22px;background:var(--signal);color:#0A0A0C;font-weight:600;
+  padding:13px 24px;border-radius:4px;text-decoration:none;font-size:14px;}
+.cta:hover{background:#ffc776;}
+
+.hero-outer{position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.dc-bg{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.dc-vignette{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 80% 30%, rgba(79,209,197,0.06), transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(255,180,84,0.05), transparent 50%);
+}
+.hero-inner{padding:80px 0 60px;position:relative;z-index:1;}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;}
+.hero-text .term{margin-top:32px;}
+.rack-art{max-width:340px;margin:0 auto;filter:drop-shadow(0 12px 30px rgba(0,0,0,.45));}
+.rack-art svg{width:100%;height:auto;display:block;}
+.scan-line{animation:scanmove 2s ease-in-out infinite;}
+@keyframes scanmove{0%,100%{transform:translateX(0);}50%{transform:translateX(56px);}}
+.wifi-ring{animation:wifipulse 2.4s ease-out infinite;transform-origin:center;}
+@keyframes wifipulse{0%{opacity:.6;transform:scale(.85);}100%{opacity:0;transform:scale(1.15);}}
+@media (prefers-reduced-motion:reduce){.scan-line,.wifi-ring{animation:none;}}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;}.rack-art{order:-1;max-width:280px;}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brand">M. SHERAZ</div>
+    <nav class="topnav">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero-outer">
+  <div class="dc-bg" aria-hidden="true"><div class="dc-vignette"></div></div>
+  <div class="wrap">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 class="name disp">MUHAMMAD<br>SHERAZ</h1>
+        <div class="role">NETWORK ENGINEER — ROUTING · SECURITY · ISP INFRASTRUCTURE</div>
+        <p class="lede">I design, secure and keep alive the networks businesses run on — from core routing and firewalls down to last-mile wireless links. Based in Lahore, Pakistan.</p>
+
+        <div class="term">
+          <div class="term-bar"><span></span><span></span><span></span></div>
+          <div class="term-body" id="termBody"></div>
+        </div>
+
+        <div class="contact-row">
+          <a href="mailto:shirazmughal51@gmail.com">shirazmughal51@gmail.com</a>
+          <a href="tel:+923326661213">0332-6661213</a>
+          <span>Model Town N-Block, Lahore, Pakistan</span>
+        </div>
+      </div>
+
+      <div class="rack-art">
+        <svg id="rackSvg" viewBox="0 0 340 470" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="num">4+</div><div class="lab">Years in networking</div></div>
+  <div class="stat"><div class="num">8</div><div class="lab">Certifications</div></div>
+  <div class="stat"><div class="num">3</div><div class="lab">ISPs &amp; enterprises</div></div>
+  <div class="stat"><div class="num">T3</div><div class="lab">Support level</div></div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>Profile</h2></div>
+    <p style="color:var(--muted);max-width:640px;font-size:15px;">
+      Network Engineer with hands-on experience across the ISP sector and enterprise environments, focused on delivering reliable, scalable and secure network solutions. Skilled in designing secure architectures with Cisco Firepower and Fortinet, running site-to-site IPSec VPNs, and supporting both core and edge infrastructure. Comfortable troubleshooting complex incidents under Tier 3 and known for a detail-oriented, proactive approach to keeping networks stable.
+    </p>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>Experience</h2></div>
+    <div class="tl">
+      <div class="job">
+        <div class="when">03/2025 — Present</div>
+        <h3>Network Engineer</h3>
+        <div class="co">Tasdeeq Private Limited · Lahore</div>
+        <ul>
+          <li>Design and implement secure network architectures using Cisco Firepower Threat Defense (FTD) and Fortinet.</li>
+          <li>Set up and maintain site-to-site IPSec VPN tunnels between office locations.</li>
+          <li>Administer FortiWeb application firewalls and manage Cisco AnyConnect for secure remote access.</li>
+          <li>Improve wireless performance via Cisco AP tooling and run regular security audits and vulnerability assessments.</li>
+          <li>Provide Tier 3 support for advanced network security incidents; monitor via SolarWinds, PRTG, Zabbix, Cacti, Site24x7.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="when">03/2022 — 02/2025</div>
+        <h3>Network Engineer</h3>
+        <div class="co">ConnecTEL Web Concepts (Pvt.) Limited · Lahore</div>
+        <ul>
+          <li>Installed and configured Cisco Catalyst switches (4948, 3750, 3560, 3550, 2960 series).</li>
+          <li>Worked extensively with OSPF, STP, MSTP and RSTP, and managed VLANs, EtherChannel and QinQ tunneling.</li>
+          <li>Established inter-city connectivity via DPIC and configured interconnects with other network vendors.</li>
+          <li>Deployed MikroTik routers with auto-failover, and last-mile wireless links (Mimosa, Ubiquiti PowerBeam, Rocket).</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="when">10/2021 — 04/2022</div>
+        <h3>Technical Support Engineer</h3>
+        <div class="co">Storm Fiber (Sybrid) · Lahore</div>
+        <ul>
+          <li>Diagnosed and resolved internet connectivity issues; configured ONT devices for customers.</li>
+          <li>Installed and configured PC hardware, network structures and essential applications.</li>
+          <li>Tracked faults and customer updates using Middleware, OTRS and Terminus.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>Skills</h2></div>
+    <div class="skill-map">
+      <div class="node"><h4>SWITCHING &amp; ROUTING</h4><p>VLANs, trunk &amp; access links, inter-VLAN routing, VTP, STP/RSTP/MSTP, HSRP, VRRP, GLBP, OSPF (stubs &amp; virtual links), BGP, MPLS, RIP, EIGRP, NAT, ACLs, summarization.</p></div>
+      <div class="node"><h4>SECURITY &amp; VPN</h4><p>Cisco Firepower Threat Defense, Fortinet &amp; FortiWeb, site-to-site IPSec VPN, Cisco AnyConnect, security audits &amp; vulnerability assessments.</p></div>
+      <div class="node"><h4>MONITORING &amp; NMS</h4><p>SolarWinds Orion, Paessler PRTG, Zabbix, Cacti, The Dude, Site24x7.</p></div>
+      <div class="node"><h4>PLATFORMS &amp; SERVERS</h4><p>Windows Server, AD, DHCP &amp; DNS administration, Group Policy, VMware ESXi, MikroTik routing.</p></div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>Certifications</h2></div>
+    <div class="cert-row">
+      <div class="chip"><span class="abbr">CCNA</span> Cisco Certified Network Associate</div>
+      <div class="chip"><span class="abbr">CCNP</span> Cisco Certified Network Professional</div>
+      <div class="chip"><span class="abbr">HCNA</span> Huawei Certified Network Associate</div>
+      <div class="chip"><span class="abbr">HCNP</span> Huawei Certified Network Professional</div>
+      <div class="chip"><span class="abbr">HCR&amp;S</span> Huawei Routing &amp; Switching</div>
+      <div class="chip"><span class="abbr">HCIA</span> Huawei Certified ICT Associate</div>
+      <div class="chip"><span class="abbr">CEH</span> Certified Ethical Hacker</div>
+      <div class="chip"><span class="abbr">CHFI</span> Certified Hacking Forensic Investigator</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>Education &amp; Languages</h2></div>
+    <p style="font-size:15px;"><strong>Bachelor of Computer Science</strong> — Global Institute of Lahore, Pakistan</p>
+    <div class="lang-row">
+      <div class="lang"><b>Punjabi</b> — Native</div>
+      <div class="lang"><b>Urdu</b> — Fluent</div>
+      <div class="lang"><b>English</b> — Good reading &amp; writing</div>
+      <div class="lang"><b>Saraiki</b> — Conversational</div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="sec-head" style="margin-bottom:16px;"><span class="sec-num mono">06</span><h2>Get in touch</h2></div>
+    <p>Every network eventually meets someone who has to keep it up at 3am. I'd rather that be me than a problem you have to solve. Based in Lahore, open to on-site, hybrid or remote — reach out and let's talk about your network.</p>
+    <a class="cta" href="mailto:shirazmughal51@gmail.com">Email me</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var svgns = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('rackSvg');
+  if(!svg) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function el(tag, attrs){
+    var e = document.createElementNS(svgns, tag);
+    for(var k in attrs){ e.setAttribute(k, attrs[k]); }
+    return e;
+  }
+  function add(parent, tag, attrs){ var e = el(tag, attrs); parent.appendChild(e); return e; }
+
+  // Rack frame
+  add(svg,'rect',{x:6,y:6,width:328,height:458,rx:8,fill:'#101014',stroke:'#2A2F3A','stroke-width':2});
+  for(var r=0;r<2;r++){
+    for(var h=0;h<20;h++){
+      add(svg,'circle',{cx:r?322:18, cy:20+h*22, r:2, fill:'#2A2F3A'});
+    }
+  }
+
+  var cableColors = ['#4FD1C5','#FFB454','#5B8DEF','#7CE07C','#E0615A'];
+
+  // --- Unit 1: Cisco Catalyst switch ---
+  var uy = 24;
+  add(svg,'rect',{x:26,y:uy,width:288,height:58,rx:4,fill:'#1a1c22',stroke:'#2A2F3A'});
+  add(svg,'text',{x:36,y:uy+16,fill:'#87858F','font-family':'JetBrains Mono, monospace','font-size':10}).textContent='CISCO CATALYST 3750 — 24-PORT';
+  var swLeds = [];
+  for(var i=0;i<24;i++){
+    var px = 36 + (i%12)*22, py = uy+26 + Math.floor(i/12)*14;
+    add(svg,'rect',{x:px,y:py,width:14,height:10,rx:1,fill:'#0c0d10',stroke:'#2A2F3A'});
+    var led = add(svg,'rect',{x:px+2,y:py+2,width:3,height:3,fill:cableColors[i%3===0?3:0]});
+    swLeds.push(led);
+  }
+
+  // --- Unit 2: Firewall appliance ---
+  var fy = 92;
+  add(svg,'rect',{x:26,y:fy,width:288,height:46,rx:4,fill:'#1a1c22',stroke:'#2A2F3A'});
+  add(svg,'text',{x:36,y:fy+16,fill:'#87858F','font-family':'JetBrains Mono, monospace','font-size':10}).textContent='NEXT-GEN FIREWALL — FTD / FORTIGATE';
+  var scan = add(svg,'rect',{x:230,y:fy+22,width:70,height:14,rx:2,fill:'#0c0d10',stroke:'#2A2F3A'});
+  var scanLine = add(svg,'rect',{x:232,y:fy+24,width:4,height:10,fill:'#FFB454',opacity:'0.9'});
+  scanLine.setAttribute('class','scan-line');
+  add(svg,'circle',{cx:40,cy:fy+30,r:4,fill:'#5EDC7A'});
+  var fwLed = add(svg,'circle',{cx:54,cy:fy+30,r:4,fill:'#FFB454'});
+
+  // --- Unit 3: Patch panel with colorful cables ---
+  var py2 = 148;
+  add(svg,'rect',{x:26,y:py2,width:288,height:34,rx:4,fill:'#17181d',stroke:'#2A2F3A'});
+  add(svg,'text',{x:36,y:py2+14,fill:'#87858F','font-family':'JetBrains Mono, monospace','font-size':9}).textContent='PATCH PANEL';
+  for(var j=0;j<12;j++){
+    var cx = 40 + j*23;
+    add(svg,'rect',{x:cx,y:py2+18,width:12,height:9,fill:'#0c0d10',stroke:'#2A2F3A'});
+    var col = cableColors[j % cableColors.length];
+    var dy = 40 + (j%4)*8;
+    var path = add(svg,'path',{d:'M'+(cx+6)+' '+(py2+27)+' C '+(cx+6)+' '+(py2+27+dy)+', '+(160)+' '+(py2+27+dy)+', 160 '+(py2+34+dy),
+      fill:'none', stroke:col, 'stroke-width':2, opacity:'0.55'});
+  }
+
+  // --- Unit 4: Router (MikroTik) ---
+  var ry = 196;
+  add(svg,'rect',{x:26,y:ry,width:288,height:34,rx:4,fill:'#1a1c22',stroke:'#2A2F3A'});
+  add(svg,'text',{x:36,y:ry+14,fill:'#87858F','font-family':'JetBrains Mono, monospace','font-size':9}).textContent='MIKROTIK CCR — EDGE ROUTER';
+  var rLeds=[];
+  for(var k=0;k<6;k++){
+    var l = add(svg,'circle',{cx:190+k*18, cy:ry+22, r:3, fill:'#4FD1C5'});
+    rLeds.push(l);
+  }
+
+  // --- Cable bundle down to floor ---
+  add(svg,'path',{d:'M160 240 C 160 300, 60 300, 60 360', fill:'none', stroke:'#5B8DEF','stroke-width':3, opacity:'.4'});
+  add(svg,'path',{d:'M160 240 C 160 300, 260 300, 260 360', fill:'none', stroke:'#FFB454','stroke-width':3, opacity:'.4'});
+
+  // --- Wireless access point, mounted lower right ---
+  var ax=250, ayy=390;
+  add(svg,'rect',{x:ax-26,y:ayy,width:52,height:14,rx:4,fill:'#1f2530',stroke:'#2A2F3A'});
+  add(svg,'circle',{cx:ax,cy:ayy+7,r:3,fill:'#4FD1C5'});
+  add(svg,'text',{x:ax-40,y:ayy+28,fill:'#87858F','font-family':'JetBrains Mono, monospace','font-size':9}).textContent='WIRELESS AP';
+  [1,2,3].forEach(function(n){
+    var ring = add(svg,'circle',{cx:ax,cy:ayy+7,r:10+n*10,fill:'none',stroke:'#4FD1C5','stroke-width':1.5,opacity:'0.5'});
+    ring.setAttribute('class','wifi-ring');
+    ring.style.animationDelay = (n*0.5)+'s';
+  });
+
+  if(reduce) return;
+
+  setInterval(function(){
+    swLeds.forEach(function(l){
+      if(Math.random() > 0.5){ l.setAttribute('opacity', Math.random()>0.3 ? '1' : '0.15'); }
+    });
+    rLeds.forEach(function(l){ l.setAttribute('opacity', Math.random()>0.4 ? '1':'0.2'); });
+  }, 220);
+
+  setInterval(function(){
+    fwLed.setAttribute('fill', fwLed.getAttribute('fill')==='#FFB454' ? '#0c0d10' : '#FFB454');
+  }, 500);
+})();
+(function(){
+  var lines = [
+    {t:"$ traceroute muhammad-sheraz", c:false},
+    {t:"1  routing-and-switching ......... 0.9 ms", c:false},
+    {t:"2  cisco-firepower / fortinet .... 1.4 ms", c:false},
+    {t:"3  isp-infrastructure ............ 2.0 ms", c:false},
+    {t:"4  muhammad-sheraz [reached]", c:true},
+    {t:"   connection secure — ready to hire", c:true}
+  ];
+  var body = document.getElementById('termBody');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  lines.forEach(function(l, i){
+    var div = document.createElement('div');
+    div.className = 'line' + (l.c ? ' ok' : '');
+    div.textContent = l.t;
+    if(!reduce){ div.style.animationDelay = (i*0.35) + 's'; }
+    body.appendChild(div);
+  });
+
+  if(reduce) return;
+})();
+</script>
+
+</body>
+</html>
